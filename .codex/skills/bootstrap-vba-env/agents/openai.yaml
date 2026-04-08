@@ -1,0 +1,4 @@
+interface:
+  display_name: "Bootstrap VBA Env"
+  short_description: "Create repo-local VBA tools environment"
+  default_prompt: "Use $bootstrap-vba-env to create or refresh the repo-local VBA tools environment."

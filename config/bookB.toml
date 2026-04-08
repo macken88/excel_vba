@@ -1,0 +1,8 @@
+[project]
+file = "workbooks/BookB.xlsm"
+vba_directory = "src/BookB_vba"
+encoding = "utf-8"
+
+[headers]
+save_headers = false
+in_file_headers = false
