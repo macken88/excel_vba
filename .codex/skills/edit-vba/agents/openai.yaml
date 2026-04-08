@@ -1,0 +1,4 @@
+interface:
+  display_name: "Edit VBA"
+  short_description: "Edit VBA source under src only"
+  default_prompt: "Use $edit-vba to update VBA source files under src for this repository."
