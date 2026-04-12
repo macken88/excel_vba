@@ -1,4 +1,0 @@
-interface:
-  display_name: "Check VBA Env"
-  short_description: "Verify repo-local VBA maintenance state"
-  default_prompt: "Use $check-vba-env to verify the repo-local VBA maintenance environment."
