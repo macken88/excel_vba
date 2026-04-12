@@ -179,7 +179,7 @@ function Resolve-RequestedWorkbooks {
 $excelVbaExe = Join-Path $PWD ".venv-vba-tools\Scripts\excel-vba.exe"
 
 if (-not (Test-Path -LiteralPath $excelVbaExe)) {
-    throw "excel-vba.exe not found in .venv-vba-tools. Run bootstrap-vba-env first."
+    throw "excel-vba.exe not found in .venv-vba-tools. Follow the setup steps in README.md first."
 }
 
 $checkResult = Invoke-External -FilePath $excelVbaExe -ArgumentList @("check")

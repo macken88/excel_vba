@@ -22,6 +22,25 @@ python -m venv .venv-vba-tools
 .\\.venv-vba-tools\\Scripts\\python.exe -m pip install -r requirements-vba-tools.txt
 ```
 
+## セットアップ後の確認
+
+環境が正しく構築されたことを以下のコマンドで確認できます。
+
+```powershell
+# vba-edit がインストールされていることを確認
+.\\.venv-vba-tools\\Scripts\\python.exe -m pip show vba-edit
+
+# config/*.toml で指定されたブックが存在するか確認
+Get-ChildItem config\\*.toml | ForEach-Object {
+    $file = Select-String -LiteralPath $_.FullName -Pattern '^file\s*=\s*"(.+)"$' |
+        Select-Object -First 1
+    if ($file) {
+        $path = $file.Matches[0].Groups[1].Value
+        Write-Host "$($_.Name): $path -> exists=$(Test-Path $path)"
+    }
+}
+```
+
 ## 重要事項
 
 - VBA の編集対象は workbook バイナリではなく `src/` 配下のテキストソースです。
