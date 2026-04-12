@@ -1,0 +1,13 @@
+# Excel バイナリ
+*.xlsm binary
+*.xlsx binary
+*.xls  binary
+
+# VBA ソース（Windows 環境前提: CRLF）
+*.bas text eol=crlf
+*.cls text eol=crlf
+*.frm text eol=crlf
+
+# 設定・ドキュメント
+*.toml text eol=lf
+*.md   text eol=lf
