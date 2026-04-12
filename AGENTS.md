@@ -38,6 +38,35 @@
 13. 既存 skill の参照先は `.agents/skills/` を正本とし、`.codex/skills/` は使わない
 14. 新しい skill を追加する場合も、作成先は `.agents/skills/` に統一する
 
+## `config/*.toml` のスキーマ
+
+各 TOML ファイルはブックごとに 1 つ作成し、ファイル名はブック名に対応させる（例: `bookA.toml` → `workbooks/BookA.xlsm`）。
+
+### `[project]` セクション
+
+| キー | 型 | 必須 | 説明 |
+|---|---|---|---|
+| `file` | string | はい | 対象 Excel ブックのリポジトリルートからの相対パス（例: `"workbooks/BookA.xlsm"`） |
+| `vba_directory` | string | はい | VBA ソースの格納ディレクトリのリポジトリルートからの相対パス（例: `"src/BookA_vba"`） |
+| `encoding` | string | いいえ | ソースファイルのエンコーディング。将来の拡張用。現在のスクリプトでは使用していない |
+
+### `[headers]` セクション
+
+| キー | 型 | 必須 | 説明 |
+|---|---|---|---|
+| `save_headers` | boolean | いいえ | VBA export 時にモジュールヘッダ（`Attribute` 行など）を保存するか。将来の拡張用。現在のスクリプトでは使用していない |
+| `in_file_headers` | boolean | いいえ | ソースファイル内にヘッダ情報を含めるか。将来の拡張用。現在のスクリプトでは使用していない |
+
+### ブック追加手順
+
+新しい Excel ブックを管理対象に追加する場合は、以下の手順を行う。
+
+1. `.xlsm` ブックを `workbooks/` に配置する
+2. `src/` 配下にブック用の VBA ソースディレクトリを作成する（例: `src/BookC_vba/`）
+3. `config/` にブック名に対応する TOML ファイルを作成する（例: `config/bookC.toml`）
+4. TOML ファイルに `[project]` セクションの `file` と `vba_directory` を記述する
+5. 必要に応じて `export-vba` skill で既存ブックから VBA ソースを書き出す
+
 ## 環境に関するルール
 1. このリポジトリは Windows 上で運用することを前提とする  
    理由: Excel / Office automation が Windows 前提のため

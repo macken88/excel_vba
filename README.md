@@ -1,20 +1,20 @@
-# VBA Maintenance Template
+# VBA 保守テンプレート
 
-This repository template is intended for maintaining Excel workbooks with VBA code under Git.
+このリポジトリテンプレートは、VBA を含む Excel ブックを Git 管理で保守するためのものです。
 
-## Structure
+## 構成
 
-- `workbooks/`: Excel workbook binaries such as `.xlsm`
-- `src/BookA_vba/`: exported VBA source for BookA
-- `src/BookB_vba/`: exported VBA source for BookB
-- `src/shared/`: shared VBA modules used across multiple workbooks
-- `config/`: repository-side workbook mapping files consumed by Codex skills
-- `AGENTS.md`: operating rules for Codex and human maintainers
-- `requirements-vba-tools.txt`: pinned Python tool dependencies
+- `workbooks/`: `.xlsm` などの Excel ブック本体
+- `src/BookA_vba/`: BookA から書き出した VBA ソース
+- `src/BookB_vba/`: BookB から書き出した VBA ソース
+- `src/shared/`: 複数ブックで共有する VBA モジュール
+- `config/`: Codex skill が参照する、ブックとソースの対応設定
+- `AGENTS.md`: Codex と人間の保守担当者向けの運用ルール
+- `requirements-vba-tools.txt`: 固定した Python ツール依存関係
 
-## Setup example
+## セットアップ例
 
-Create a dedicated environment on Windows:
+Windows 上で専用の仮想環境を作成します。
 
 ```powershell
 python -m venv .venv-vba-tools
@@ -22,11 +22,11 @@ python -m venv .venv-vba-tools
 .\\.venv-vba-tools\\Scripts\\python.exe -m pip install -r requirements-vba-tools.txt
 ```
 
-## Important
+## 重要事項
 
-- Edit VBA text sources under `src/`, not workbook binaries directly.
-- Use Codex skills to standardize synchronization procedures.
-- Update `config/*.toml` to match actual workbook filenames and source directories.
-- `config/*.toml` uses this repository's `[project]` format. Treat it as project metadata for skills, not as a `vba-edit` CLI config file to pass directly to `excel-vba --config`.
-- Before import/export, enable Excel's `Trust access to the VBA project object model`.
-- Import/export skills should translate `config/*.toml` into explicit `excel-vba --file ... --vba-directory ...` arguments.
+- VBA の編集対象は workbook バイナリではなく `src/` 配下のテキストソースです。
+- 同期手順は Codex skill を使って標準化してください。
+- `config/*.toml` は実際の workbook 名とソースディレクトリに合わせて更新してください。
+- `config/*.toml` はこのリポジトリ独自の `[project]` 形式です。`excel-vba --config` に直接渡す CLI 用設定としては扱わず、skill 用のプロジェクト設定として扱ってください。
+- import / export の前に、Excel の `Trust access to the VBA project object model` を有効にしてください。
+- import / export skill は `config/*.toml` を読み取り、`excel-vba --file ... --vba-directory ...` の明示引数へ変換して実行してください。
