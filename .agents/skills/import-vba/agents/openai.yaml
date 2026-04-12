@@ -1,0 +1,4 @@
+interface:
+  display_name: "Import VBA"
+  short_description: "Import tracked VBA into selected workbooks"
+  default_prompt: "Use $import-vba to import tracked VBA source into selected workbooks."
