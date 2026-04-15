@@ -9,8 +9,21 @@
 - `src/BookB_vba/`: BookB から書き出した VBA ソース
 - `src/shared/`: 複数ブックで共有する VBA モジュール
 - `config/`: Codex skill が参照する、ブックとソースの対応設定
+- `.agents/skills/`: Codex skill の定義（下記「Codex Skill」参照）
 - `AGENTS.md`: Codex と人間の保守担当者向けの運用ルール
 - `requirements-vba-tools.txt`: 固定した Python ツール依存関係
+
+## Codex Skill
+
+`.agents/skills/` に定義された skill を通じて、定型作業を再現可能な手順で実行します。
+
+| skill | 概要 |
+|---|---|
+| `export-vba` | Excel ブックから VBA ソースを `src/` にエクスポート |
+| `edit-vba` | `src/` 配下の VBA ソースをテキスト編集 |
+| `sync-shared-modules` | `src/shared/` の共通モジュールを各ブック用ディレクトリへコピー |
+| `import-vba` | `src/` のソースを Excel ブックにインポート |
+| `review-vba-diff` | `src/` の Git diff を表示・サマリ出力（読み取り専用） |
 
 ## セットアップ例
 

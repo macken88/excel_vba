@@ -84,11 +84,13 @@
 ## Codex に期待する skill
 Codex には、最終的に次のような skill を用意することを想定する。
 
-- `export-vba`
-- `edit-vba`
-- `sync-shared-modules`
-- `import-vba`
-- `review-vba-diff`
+| skill | 概要 |
+|---|---|
+| `export-vba` | Excel ブックから VBA ソースを `src/` にエクスポートする。Trust Access チェック → config 解決 → `excel-vba export` の順で実行 |
+| `edit-vba` | `src/` 配下の `.bas` / `.cls` / `.frm` をテキスト編集する。`.xlsm` には触れず、変更後に re-import 要否を報告 |
+| `sync-shared-modules` | `src/shared/` の共通モジュールを `config/*.toml` の `[shared].modules` に基づき各ブック用ディレクトリへコピー |
+| `import-vba` | `src/` のテキストソースを Excel ブックにインポートする。Trust Access チェック → config 解決 → `excel-vba import` の順で実行 |
+| `review-vba-diff` | `src/` の Git diff を表示し、変更ファイル・影響ブック・共有モジュール変更の有無をサマリ出力。読み取り専用 |
 
 これらの skill は、場当たり的なシェル操作ではなく、再現可能で決定的な手順をカプセル化すること。
 配置先は `.agents/skills/` を標準とする。
