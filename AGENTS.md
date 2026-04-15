@@ -57,6 +57,12 @@
 | `save_headers` | boolean | いいえ | VBA export 時にモジュールヘッダ（`Attribute` 行など）を保存するか。将来の拡張用。現在のスクリプトでは使用していない |
 | `in_file_headers` | boolean | いいえ | ソースファイル内にヘッダ情報を含めるか。将来の拡張用。現在のスクリプトでは使用していない |
 
+### `[shared]` セクション
+
+| キー | 型 | 必須 | 説明 |
+|---|---|---|---|
+| `modules` | array of string | いいえ | このブックが使用する `src/shared/` 配下の共有モジュールファイル名のリスト（例: `["CommonUtilities.bas"]`）。`sync-shared-modules` skill はこのリストに基づいて `src/shared/` からブック用ディレクトリへコピーする |
+
 ### ブック追加手順
 
 新しい Excel ブックを管理対象に追加する場合は、以下の手順を行う。
@@ -65,7 +71,8 @@
 2. `src/` 配下にブック用の VBA ソースディレクトリを作成する（例: `src/BookC_vba/`）
 3. `config/` にブック名に対応する TOML ファイルを作成する（例: `config/bookC.toml`）
 4. TOML ファイルに `[project]` セクションの `file` と `vba_directory` を記述する
-5. 必要に応じて `export-vba` skill で既存ブックから VBA ソースを書き出す
+5. 共有モジュールを使用する場合は `[shared]` セクションの `modules` にファイル名を記述する
+6. 必要に応じて `export-vba` skill で既存ブックから VBA ソースを書き出す
 
 ## 環境に関するルール
 1. このリポジトリは Windows 上で運用することを前提とする  
