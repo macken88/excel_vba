@@ -6,3 +6,6 @@ encoding = "utf-8"
 [headers]
 save_headers = false
 in_file_headers = false
+
+[shared]
+modules = ["CommonUtilities.bas"]

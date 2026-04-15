@@ -149,7 +149,7 @@ function Resolve-RequestedWorkbooks {
     $seen = @{}
 
     foreach ($requestedBookFile in $RequestedBookFiles) {
-        $exactMatch = $ConfiguredWorkbooks | Where-Object { $_.File -ceq $requestedBookFile }
+        $exactMatch = @($ConfiguredWorkbooks | Where-Object { $_.File -ceq $requestedBookFile })
 
         if ($exactMatch.Count -eq 1) {
             if (-not $seen.ContainsKey($exactMatch[0].File)) {
