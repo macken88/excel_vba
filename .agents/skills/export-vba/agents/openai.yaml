@@ -1,0 +1,4 @@
+interface:
+  display_name: "Export VBA"
+  short_description: "Export VBA from selected workbooks into src/"
+  default_prompt: "Use $export-vba to export VBA source from selected workbooks into src/."

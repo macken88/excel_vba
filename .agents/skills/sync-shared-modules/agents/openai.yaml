@@ -1,0 +1,4 @@
+interface:
+  display_name: "Sync Shared Modules"
+  short_description: "Copy shared VBA modules from src/shared/ into each workbook's VBA directory"
+  default_prompt: "Use $sync-shared-modules to propagate shared module changes to all workbook VBA directories."

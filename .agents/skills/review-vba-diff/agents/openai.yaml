@@ -1,0 +1,4 @@
+interface:
+  display_name: "Review VBA Diff"
+  short_description: "Show and summarize pending VBA source changes before committing or importing"
+  default_prompt: "Use $review-vba-diff to review the pending VBA source changes in src/ before proceeding."
