@@ -38,3 +38,21 @@ Public Sub AddDemoRow()
     targetSheet.Cells(nextRow, 2).Value = "Row-" & Format$(nextRow - 1, "00")
     targetSheet.Cells(nextRow, 3).Value = "Added at " & Format$(Now, "hh:mm")
 End Sub
+
+Public Sub OutputTrigTable()
+    Dim i As Long
+    Dim angle As Double
+    Const PI As Double = 3.14159265358979
+
+    With ActiveSheet
+        .Cells(1, 1).Value = "Sin"
+        .Cells(1, 2).Value = "Cos"
+        For i = 1 To 10
+            angle = i * PI / 10
+            .Cells(i + 1, 1).Value = Round(Sin(angle), 6)
+            .Cells(i + 1, 2).Value = Round(Cos(angle), 6)
+        Next i
+        .Range("A1:B1").Font.Bold = True
+        .Columns("A:B").AutoFit
+    End With
+End Sub
